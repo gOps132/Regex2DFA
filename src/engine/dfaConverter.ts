@@ -99,23 +99,22 @@ export function nfaToDFA(nfa: NFA): DFA {
     for (const sym of alphabet) {
       const moveResult = move(currentSubset, sym, nfa);
       const targetClosure = epsilonClosure(moveResult, nfa);
-      
-      // If targetClosure is empty, in classic DFA we create a dead/trap state
-      if (targetClosure.size > 0) {
-        const targetKey = setToKey(targetClosure);
-        const toState = getOrAddState(targetClosure, false);
-        
-        transitions.push({
-          from: fromState.id,
-          to: toState.id,
-          symbol: sym,
-        });
-        
-        transitionMap[fromState.id][sym] = toState.id;
-        
-        if (!processed.has(targetKey)) {
-          queue.push(targetClosure);
-        }
+
+      // The empty subset is the explicit non-accepting dead state. Processing it
+      // like any other subset gives it a self-loop for every alphabet symbol.
+      const targetKey = setToKey(targetClosure);
+      const toState = getOrAddState(targetClosure, false);
+
+      transitions.push({
+        from: fromState.id,
+        to: toState.id,
+        symbol: sym,
+      });
+
+      transitionMap[fromState.id][sym] = toState.id;
+
+      if (!processed.has(targetKey)) {
+        queue.push(targetClosure);
       }
     }
   }
