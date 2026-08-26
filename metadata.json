@@ -1,0 +1,7 @@
+{
+  "name": "Regex2DFA",
+  "version": "1.0.0",
+  "description": "Interactive Regular Expression to Deterministic Finite Automaton (DFA) converter with visual state machine designer, string simulation, step-by-step Thompson and Powerset constructions, and minimization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
