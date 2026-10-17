@@ -36,5 +36,5 @@ Then open `http://localhost:3000`.
 
 ## Note
 
-This tool is intended to support learning, not replace it. Doing it yourself 
-yourself before using this tool to check your work is highly recommended.
+This tool is intended to support learning, not replace it. Doing it yourself before using this tool to check your work is highly recommended.
+
